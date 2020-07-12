@@ -1,0 +1,50 @@
+body {
+    width: 60%;
+    margin: auto;
+    margin-top: 4rem;
+    background-image: linear-gradient(to right, rgb(183, 220, 255) , rgb(251, 253, 255));
+}
+
+#input_search{
+    width: 72%;
+    display: inline-block;
+    border: 3px solid rgb(225, 225, 225);
+}
+
+#button_search{
+    width: 25%;
+    float: right;
+    min-width: 60px;
+}
+
+.result_divs{
+    margin-top: 15px;
+    width: 48.5%;
+    display: inline-block;
+    padding: 10px;
+    background-color: white;
+    border: 3px solid rgb(225, 225, 225);
+    border-radius: 10px;
+}
+
+.web_result{
+    margin-bottom: 20px;
+}
+
+#web_results{
+    float: right;
+}
+
+#image_results{
+    text-align: center;
+}
+
+#image_results h4{
+    text-align: left;
+}
+
+.image_result{
+    width: 100px;
+    height: auto;
+    margin: 10px;
+}
