@@ -25,10 +25,15 @@ body {
     background-color: white;
     border: 3px solid rgb(225, 225, 225);
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .web_result{
     margin-bottom: 20px;
+}
+
+a{
+    word-wrap: break-word;
 }
 
 #web_results{
@@ -67,3 +72,17 @@ body {
   }
   
 #pagination a:hover:not(.active) {background-color: #ddd;}
+
+@media screen and (max-width: 600px) {
+    body {
+      width: 90%;
+    }
+
+    .result_divs{
+        width: 100%;
+    }
+
+    #web_results{
+        float: unset;
+    }
+}
