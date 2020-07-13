@@ -4,11 +4,11 @@ document.getElementById("button_search").addEventListener("click", search);
 
 function search() {
     // po zavolani funkcie sa ako prve nacita hodnota z inputboxu do premennej
-    search_expression = document.getElementById('input_search').value
+    search_expression = document.getElementById('input_search').value;
 
     // zavolanie funkcii web_search a images_search ktore, dostanu ako vstupny parameter hodnotu z inputboxu(hladana hodnota)
-    web_search(search_expression)
-    images_search(search_expression)
+    web_search(search_expression);
+    images_search(search_expression);
 }
 
 // funkcia images_search ma 1 vstupny parameter, v ktorom je ulozene hladana hodnota
@@ -20,7 +20,7 @@ function images_search(expression) {
     request_images.send();
 
     // najdene vysledny v JSON formate su spracovane pomocou funkcie parse a ulozene do premennej
-    results_images = JSON.parse(request_images.responseText)
+    results_images = JSON.parse(request_images.responseText);
 
     // cyklus for prejde postupne vsetky prvky
     for (i = 0; i < results_images['items'].length; i++) {
@@ -33,11 +33,11 @@ function images_search(expression) {
         new_image.setAttribute("alt", results_images['items'][i]['title']);
 
         // vytvorenie 'a' elementu
-        image_reference = document.createElement('a')
+        image_reference = document.createElement('a');
         // definovanie atributov noveho 'a' elemntu
-        image_reference.setAttribute("href", results_images['items'][i]['image']['contextLink'])
+        image_reference.setAttribute("href", results_images['items'][i]['image']['contextLink']);
         // vlozenie 'img' elemntu do 'a' elementu
-        image_reference.appendChild(new_image)
+        image_reference.appendChild(new_image);
         // vlozenie 'a' elemntu do elementu s id = 'image_results'
         document.getElementById('image_results').appendChild(image_reference);
     }
@@ -52,11 +52,11 @@ function web_search(expression) {
     request.send();
 
     // najdene vysledny v JSON formate su spracovane pomocou funkcie parse a ulozene do premennej
-    results = JSON.parse(request.responseText)
+    results = JSON.parse(request.responseText);
 
     // vytvorenie div elementu na strankovanie vysledkov(na kazdom liste mozu byt zobrazene maximalne 4 vysledky)
-    pages = document.createElement('div')
-    pages.setAttribute("id", "pagination")
+    pages = document.createElement('div');
+    pages.setAttribute("id", "pagination");
 
     // cyklus for prejde vsetky najdene vysledky
     for (i = 0; i < results['items'].length; i++) {
@@ -65,52 +65,52 @@ function web_search(expression) {
         // na jednej stranke tak moze zobrazit maximalne 4 vysledky
         // ak je vysledkov viac ako 4, tak sa vytvori 2. stranka vysledkov a 5.-8. item sa priradi do tejto stranky. Dalej nasledne pokracuje rovnakou logikou
         if (i % 4 == 0) {
-            new_page = document.createElement('div')
-            new_page.setAttribute("id", "page" + (Math.floor(i / 4) + 1) + "_web_results")
-            new_page.setAttribute("hidden", true)
-            document.getElementById('web_results').appendChild(new_page)
+            new_page = document.createElement('div');
+            new_page.setAttribute("id", "page" + (Math.floor(i / 4) + 1) + "_web_results");
+            new_page.setAttribute("hidden", true);
+            document.getElementById('web_results').appendChild(new_page);
 
             // vytvorenie odkazu na dalsiu stranku vysledkov
-            new_a = document.createElement('a')
-            new_a.innerHTML = Math.floor(i / 4) + 1
-            new_a.addEventListener("click", pagination)
-            pages.appendChild(new_a)
+            new_a = document.createElement('a');
+            new_a.innerHTML = Math.floor(i / 4) + 1;
+            new_a.addEventListener("click", pagination);
+            pages.appendChild(new_a);
         }
         
         // vytvorenie a definovanie atributov pre DIV element, v ktorom je vypisana konkretna informacia
-        new_div = document.createElement('div')
-        new_div.setAttribute("id", "result" + i)
-        new_div.setAttribute("class", "web_result")
-        new_page.appendChild(new_div)
+        new_div = document.createElement('div');
+        new_div.setAttribute("id", "result" + i);
+        new_div.setAttribute("class", "web_result");
+        new_page.appendChild(new_div);
         
         // vlozenie informacii(nadpis, link, popis) o najdenych strankach do DIV elementu
-        new_div.innerHTML += results['items'][i]['title'] + '<br>'
-        new_div.innerHTML += '<a href = "' + results['items'][i]['formattedUrl'] + '">' + results['items'][i]['formattedUrl'] + '</a><br>'
-        new_div.innerHTML += results['items'][i]['snippet'] + '<br>'
+        new_div.innerHTML += results['items'][i]['title'] + '<br>';
+        new_div.innerHTML += '<a href = "' + results['items'][i]['formattedUrl'] + '">' + results['items'][i]['formattedUrl'] + '</a><br>';
+        new_div.innerHTML += results['items'][i]['snippet'] + '<br>';
     }
 
     // priradenie DIV elementu so strankovanim
-    document.getElementById('web_results').appendChild(pages)
+    document.getElementById('web_results').appendChild(pages);
 
     // definovanie triedy active pre strankovanie
-    document.getElementById('pagination').getElementsByTagName('a')[0].setAttribute('class', 'active')
+    document.getElementById('pagination').getElementsByTagName('a')[0].setAttribute('class', 'active');
     // odstranenie hidden atributu z prvej stranky vysledkov a nastavenie triedy actual
-    document.getElementById('page1_web_results').removeAttribute('hidden')
-    document.getElementById('page1_web_results').setAttribute('class', 'actual')
+    document.getElementById('page1_web_results').removeAttribute('hidden');
+    document.getElementById('page1_web_results').setAttribute('class', 'actual');
 }
 
 // funkcia pagination sluzi na prechod medzi jednotlivymi strankami vysledkov 
 function pagination() {
     // odstranenie atributu class a definovanie atributu "hidden" z elemntu DIV, ktory bol aktualne zobrazeny
-    document.getElementById('web_results').getElementsByClassName("actual")[0].setAttribute('hidden', true)
-    document.getElementById('web_results').getElementsByClassName("actual")[0].removeAttribute('class')
+    document.getElementById('web_results').getElementsByClassName("actual")[0].setAttribute('hidden', true);
+    document.getElementById('web_results').getElementsByClassName("actual")[0].removeAttribute('class');
 
     // nastavenie atributu class a vymazanie atributu "hidden" z elemntu DIV, ktory chceme zobrazit
-    document.getElementById("page" + this.text + "_web_results").removeAttribute('hidden')
-    document.getElementById("page" + this.text + "_web_results").setAttribute('class', 'actual')
+    document.getElementById("page" + this.text + "_web_results").removeAttribute('hidden');
+    document.getElementById("page" + this.text + "_web_results").setAttribute('class', 'actual');
     
     // zmazanie atributu class z elemntu, ktory bol pred tym aktualne zobrazeny
-    document.getElementById('pagination').getElementsByClassName("active")[0].removeAttribute('class')
+    document.getElementById('pagination').getElementsByClassName("active")[0].removeAttribute('class');
     // nastavenie atributu class na "active" v zozname strankovania
-    this.setAttribute('class', 'active')
+    this.setAttribute('class', 'active');
 }
