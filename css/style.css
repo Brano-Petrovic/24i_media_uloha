@@ -19,13 +19,16 @@ body {
 
 .result_divs{
     margin-top: 15px;
-    width: 48.5%;
-    display: inline-block;
     padding: 10px;
     background-color: white;
     border: 3px solid rgb(225, 225, 225);
     border-radius: 10px;
     margin-bottom: 20px;
+    flex: 1;
+}
+
+#all_results_div{
+    display: flex;
 }
 
 .web_result{
@@ -37,7 +40,7 @@ a{
 }
 
 #web_results{
-    float: right;
+    margin-left: 3%;
 }
 
 #image_results{
