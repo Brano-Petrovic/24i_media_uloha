@@ -1,0 +1,35 @@
+a{
+    word-wrap: break-word;
+}
+
+.result_divs{
+    margin-top: 15px;
+    padding: 10px;
+    background-color: white;
+    border: 3px solid rgb(225, 225, 225);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.web_result{
+    margin-bottom: 20px;
+}
+
+#web_results{
+    margin-left: 3%;
+}
+
+#image_results{
+    text-align: center;
+}
+
+#image_results h4{
+    text-align: left;
+}
+
+.image_result{
+    width: 100px;
+    height: auto;
+    margin: 10px;
+}

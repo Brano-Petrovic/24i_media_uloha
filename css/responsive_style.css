@@ -1,0 +1,18 @@
+@media only screen and (max-width: 1000px) {
+    body {
+      width: 90%;
+    }
+
+    .result_divs{
+        width: 100%;
+    }
+    
+    #all_results_div{
+        display: block;
+    }
+
+    #web_results{
+        float: unset;
+        margin-left: unset;
+    }
+}
