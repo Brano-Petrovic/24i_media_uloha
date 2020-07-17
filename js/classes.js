@@ -1,17 +1,15 @@
 class search_engine {
     pagination(){
+        var search_expression = document.getElementById('input_search').value;
+        
         if (event.target.id.includes('web')){
             document.getElementById('web_results').innerHTML = '<h4>Web results</h4>'
-
-            var search_expression = document.getElementById('input_search').value;
             var startIndex = (event.target.text * 4) - (4-1)
 
             this.web_search(search_expression, startIndex);
         }
         else{
             document.getElementById('image_results').innerHTML = '<h4>Image results</h4>'
-
-            var search_expression = document.getElementById('input_search').value;
             var startIndex = (event.target.text * 8) - (8-1)
 
             this.images_search(search_expression, startIndex);
