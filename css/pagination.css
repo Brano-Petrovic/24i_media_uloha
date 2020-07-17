@@ -1,8 +1,8 @@
-#pagination {
+#web_pagination, #image_pagination {
     text-align: center;
   }
   
-#pagination a {
+#web_pagination a, #image_pagination a {
     color: black;
     padding: 6px 12px;
     text-decoration: none;
@@ -10,11 +10,11 @@
     cursor: pointer;
   }
   
-#pagination a.active {
+#web_pagination a.active, #image_pagination a.active {
     background-color: #37a4ec;
     color: white;
   }
   
-#pagination a:hover:not(.active) {
+#web_pagination a:hover:not(.active), #image_pagination a:hover:not(.active) {
     background-color: #ddd;
 }
